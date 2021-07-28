@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <div class="page">
     <header class="header">
         <div class="container">
@@ -28,12 +29,14 @@
         <div class="">
 
             <div class="auth-text"><h5>Authorization</h5></div>
-            <form method="post" action="auth-form">
+            <div class="auth-text"><h5><?= $_SESSION['message']? : ''  ?></h5></div>
+            <form method="post" action="">
                 <div><input class="form-input" type="text" name="login" placeholder="Enter your login"></div>
-                <div><input class="form-input" type="password" name="pwd" placeholder="Enter your password"></div>
+                <div><input class="form-input" type="password" name="password" placeholder="Enter your password"></div>
                 <div><button class="auth-button" type="submit" value="login" >Login</button></div>
                 <div class="form-href-reg">Dont have account? Please  <a class="" href="register">registration</a> </div>
             </form>
         </div>
     </div>
 </section>
+    <?php $_SESSION['message'] = '' ?>

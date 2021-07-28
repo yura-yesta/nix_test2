@@ -25,15 +25,17 @@
         <div class="authorization">
 
             <div class="">
-                <div class="auth-text"><h5><?= $_SESSION['authMessage']; ?></h5></div>
+<!--                //<div class="auth-text"><h5>--><?//= $_SESSION['authMessage']; ?><!--</h5></div>-->
                 <div class="auth-text"><h5>Registration</h5></div>
-                <form  action="reg-form" method="post">
+                <div class="auth-text"><h5><?= $_SESSION['message']? : ''  ?></h5></div>
+                <form  action="" method="post">
                     <div><input class="form-input" type="text" name="login" placeholder="Enter your login"></div>
                     <div><input class="form-input" type="text" name="name" placeholder="Enter your name"></div>
-                    <div><input class="form-input" type="password" name="pwd" placeholder="Enter your password"></div>
+                    <div><input class="form-input" type="password" name="password" placeholder="Enter your password"></div>
                     <div><button class="auth-button" type="submit" value="login" >Register</button></div>
                     <div class="form-href-reg">You have account? Please  <a class="" href="/login">Login</a> </div>
                 </form>
             </div>
         </div>
     </section>
+<?php $_SESSION['message'] = '' ?>

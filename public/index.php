@@ -13,18 +13,20 @@ use Dotenv;
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
-//$config = [
+$config = [
 ////    'db' => [
-//    'dsn'      => $_ENV['DB_DSN'],
-//    'userController'    => $_ENV['DB_USER'],
-//    'password'=> $_ENV['DB_PASSWORD']
-////        ]
+    'dsn'      => $_ENV['DB_DSN'],
+    'user'    => $_ENV['DB_USER'],
+    'password'=> $_ENV['DB_PASSWORD']
+       ];
 //];
 //var_dump($config);
-$app = new controller();
+$app = new controller($config);
 $app->router->get('/',  'web');
 $app->router->get('/register',  [userController::class, 'register']);
+$app->router->post('/register',  [userController::class, 'register']);
 $app->router->get('/login',  [userController::class, 'login']);
+$app->router->post('/login',  [userController::class, 'login']);
 $app->router->get('/blog',  [blogController::class, 'blog']);
 
 
