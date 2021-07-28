@@ -1,0 +1,165 @@
+body {
+    margin: 0;
+    font-family: Tahoma, sans-serif;
+    font-size:  15px;
+    line-height: 1.4;
+    color: #2a2a2a;
+
+
+}
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+}
+.page {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.header {
+    background-color: #f7f7f7;
+}
+.header-top {
+    display: flex;
+    justify-content: space-between;
+}
+.auth {
+    margin-top: 30px;
+    font-size: 13px;
+
+}
+.menu {
+margin-top: 40px;
+}
+.nav {
+    font-size: 16px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.nav_link {
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 40px;
+    color: #5f5f5f;
+
+
+    transition: color .1s linear;
+}
+.nav_link:hover {
+    color: black;
+}
+.content {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    height: 100%;
+}
+
+.blog {
+    display: flex;
+    flex-wrap: wrap;;
+    justify-content: space-between;
+}
+.blog-inside {
+    width: 280px;
+    border-top: wheat 1px solid;
+    margin-top: 10px;
+
+}
+
+
+.footer {
+    margin-top: auto;
+    height: 130px;
+    background: rgba(15,15,15,0.96);
+    /*margin: auto;*/
+    padding: 5px;
+}
+.footer-column {
+    display: flex;
+    flex-wrap: wrap;
+    /*justify-content: space-between;*/
+}
+.column-inside {
+
+    text-align: justify;
+    line-height: 0.8;
+    margin: 0 auto;
+}
+.column-1 {
+    width: 70%;
+    color: #885454;
+}
+.column-2 {
+    width: 30%;
+}
+.footer-nav {
+    text-decoration: none;
+
+
+
+    color: #909090;
+
+
+    transition: color .1s linear;
+}
+.footer-nav:hover {
+    color: #ffffff;
+}
+
+.form-input {
+    margin:  20px 0;
+    padding: 10px;
+    width: 300px;
+}
+.auth-button {
+    width: 300px;
+    margin:  20px 0;
+    padding: 6px;
+    background: #d6d6d6;
+    border: unset;
+    cursor: pointer;
+}
+.authorization {
+    margin: 50px auto;
+    /*//height: auto;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.auth-text {
+    color: #4b4b4b;
+    text-align: center;
+}
+.account-input {
+    border: unset;
+    margin:  20px 0;
+    padding: 10px;
+    width: 300px;
+    border-bottom: #d6d6d6 2px solid ;
+}
+.navigation {
+    display: flex;
+    flex-wrap: wrap;
+}
+.blog-img {
+    width: 50%;
+    text-align: center;
+}
+.img-correct {
+    margin-top: 80px;
+}
+
+
+
+
+
+
