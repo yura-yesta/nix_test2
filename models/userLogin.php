@@ -27,4 +27,15 @@ class userLogin extends dbModel
     public function userAccount(){
         return $this->gotUser();
     }
+    public static function changeLogo(){
+            session_start();
+        $id = $_SESSION['user']['id'];
+        if (!file_exists("../public/image/$id")){
+            mkdir("../public/image/$id");
+        }
+
+            $image = $_FILES['image']['tmp_name'];
+            return move_uploaded_file($image, "../public/image/$id/logo.jpeg");
+
+    }
 }

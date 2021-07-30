@@ -29,7 +29,8 @@ $app->router->get('/login',  [userController::class, 'login']);
 $app->router->post('/login',  [userController::class, 'login']);
 $app->router->get('/blog',  [blogController::class, 'blog']);
 $app->router->get('/account',  [userController::class, 'account']);
+$app->router->post('/account',  [userController::class, 'account']);
 $app->router->get('/exit',  [userController::class, 'exitAccount']);
-
+$app->router->post('/changeInfo',  [userController::class, 'changeInfo']);
 $app->run();
 

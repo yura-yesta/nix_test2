@@ -6,6 +6,7 @@ namespace App\core;
 
 use App\controllers\controller;
 use App\models\model;
+use PDO;
 
 abstract class dbModel extends model
 {
@@ -28,6 +29,38 @@ abstract class dbModel extends model
 
 
     }
+    public function update($id){
+        $tableName = 'users';
+        $arr = controller::$app->request->getbody();
+        $attributes = [];
+        $bindParam = [];
+
+
+        foreach ($arr as $attr => $item){
+if(!empty($item)) {
+    $attributes[] = $attr.' = :'.$attr;
+    $bindParam[] = $attr;
+}}
+        $imp = implode(', ', $attributes);
+        $change = 'loginchange';
+        $change2 = 'test';
+
+        $statement = self::prepare("UPDATE $tableName SET $imp WHERE id = $id ");
+        foreach ($bindParam as $attr ){
+            $statement->bindParam(":$attr", $this->{$attr});
+        }
+
+        return $statement->execute();
+
+
+    }
+    public function selectBlog($table){
+        $statement = self::prepare("SELECT * FROM $table");
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    }
+
     public static function prepare($sql){
         return controller::$app->db->PDO->prepare($sql);
     }

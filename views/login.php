@@ -6,9 +6,7 @@
                 <div class="logo ">
                     <h1>N-ix education</h1>
                 </div>
-                <div class="auth sign-in">
 
-                </div>
             </div>
         </div>
     </header>

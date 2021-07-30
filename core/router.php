@@ -49,14 +49,14 @@ class router
 
     }
 
-    public function renderView(string $view, $params = [])
+    public function renderView(string $view, $params = [], $data = [] )
     {
         //$layoutContent = $this->layoutContent($view);
         //$viewContent = $this->renderOnlyView($view);
         //$res = include_once __DIR__."/../views/layouts/main.php";
         //echo str_replace('World', 1488, $res);
 //        include_once __DIR__."/../views/$view.php";
-        $viewContent = $this->renderOnlyView($view,$params );
+        $viewContent = $this->renderOnlyView($view,$params, $data );
         $layoutContent = $this->layoutContent();
         echo  str_replace('{{content}}', $viewContent, $layoutContent );
 
@@ -76,15 +76,15 @@ class router
 
 
     }
-    protected function renderOnlyView($view, $params = [])
+    protected function renderOnlyView($view, $params = [], $data = [])
     {
         if ($params){
             foreach ($params as $key => $value){
-                $$key = $value;
+               ( $$key = $value);
 
             }
         }
-
+        $data = $data;
         ob_start();
 
         require "../views/$view.php";

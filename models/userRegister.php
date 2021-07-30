@@ -26,4 +26,6 @@ class userRegister extends dbModel
     public function registerUser(){
        return $this->save();
     }
+
+
 }

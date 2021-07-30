@@ -12,6 +12,7 @@
             text-decoration: none; /* Убирает подчеркивание для ссылок */
         }
     </style>
+
     <title>N-ix test</title>
 </head>
 <body>
