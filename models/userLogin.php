@@ -24,4 +24,7 @@ class userLogin extends dbModel
     public function checkUserGo(){
          return $this->checkUser();
     }
+    public function userAccount(){
+        return $this->gotUser();
+    }
 }

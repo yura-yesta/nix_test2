@@ -48,4 +48,12 @@ abstract class dbModel extends model
         }
 
     }
+    public function gotUser(){
+        $tableName = 'users';
+        $statement = self::prepare("SELECT * FROM $tableName  WHERE login = :login");
+        $statement->bindParam(":login", $this->{'login'});
+        $statement->execute();
+        $res = $statement->fetch();
+        return $res;
+    }
 }

@@ -4,9 +4,14 @@ body {
     font-size:  15px;
     line-height: 1.4;
     color: #2a2a2a;
+    text-decoration: none;
 
 
 }
+A {
+    text-decoration: none;
+}
+
 *,
 *:before,
 *:after {

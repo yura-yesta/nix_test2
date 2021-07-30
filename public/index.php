@@ -28,7 +28,8 @@ $app->router->post('/register',  [userController::class, 'register']);
 $app->router->get('/login',  [userController::class, 'login']);
 $app->router->post('/login',  [userController::class, 'login']);
 $app->router->get('/blog',  [blogController::class, 'blog']);
-
+$app->router->get('/account',  [userController::class, 'account']);
+$app->router->get('/exit',  [userController::class, 'exitAccount']);
 
 $app->run();
 

@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,6 +7,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        A {
+            text-decoration: none; /* Убирает подчеркивание для ссылок */
+        }
+    </style>
     <title>N-ix test</title>
 </head>
 <body>

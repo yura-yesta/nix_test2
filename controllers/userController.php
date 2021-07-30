@@ -41,7 +41,15 @@ public static function register(){
 
             if($userLogin->validate() && $userLogin->checkUserGo()){
                 session_start();
-                $_SESSION['access'] = true;
+                $res = $userLogin->userAccount();
+                $_SESSION['message'] = "Hello my dear {$res['name']} ";
+                $_SESSION['user'] = $res;
+
+
+
+
+                //var_dump($_SESSION['user']['login']);
+
                 header('Location: /account');
             }else{
                 session_start();
@@ -51,4 +59,22 @@ public static function register(){
         }
 
     }
+    public static function account(){
+    $userAccount = new userLogin();
+
+    session_start();
+    if(!$_SESSION['user'] == false){
+        controller::$app->router->renderView('account');
+    }else{
+        $_SESSION['message'] = 'please log in for enter account';
+        header('Location: /login');
+    }
+   }
+   public static function exitAccount(){
+       session_start();
+       session_unset();
+       $_SESSION['message'] = 'Good-buy!  ';
+       header('Location: /login');
+
+   }
 }

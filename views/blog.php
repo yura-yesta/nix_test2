@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <div class="page">
     <header class="header">
         <div class="container">
@@ -6,7 +7,7 @@
                     <h1>N-ix education</h1>
                 </div>
                 <div class="auth sign-in">
-                    Login
+
                 </div>
             </div>
         </div>
@@ -16,7 +17,7 @@
             <nav class="nav">
                 <a class="nav_link" href="/">home</a>
                 <a class="nav_link" href="blog">blog</a>
-                <a class="nav_link" href="login">sign-in</a>
+                <?= $_SESSION['user']['name'] ? "<a href='/account'>Hello {$_SESSION['user']['name']}</a>".' | '.'<a href="/exit">exit</a>' : '<a class="nav_link" href="login">Sign in</a>' ?>
             </nav>
         </div>
     </menu>
