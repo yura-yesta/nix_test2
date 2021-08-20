@@ -6,7 +6,6 @@
                 <div class="logo ">
                     <h1>N-ix education</h1>
                 </div>
-
             </div>
         </div>
     </header>
@@ -20,11 +19,8 @@
         </div>
     </menu>
     <section class="container">
-
         <div class="authorization">
-
             <div class="">
-<!--                //<div class="auth-text"><h5>--><?//= $_SESSION['authMessage']; ?><!--</h5></div>-->
                 <div class="auth-text"><h5>Registration</h5></div>
                 <div class="auth-text"><h5><?= $_SESSION['message']? : ''  ?></h5></div>
                 <form  action="" method="post">

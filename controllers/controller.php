@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\controllers;
-
 
 use App\core\dataBase;
 use App\core\request;
@@ -15,22 +13,19 @@ class controller
      */
     public static controller $app;
     public Database $db;
-    /**
-     * @var controller
-     */
-
     public $router;
- public $request;
+    public $request;
 
- public function __construct ($config){
-     self::$app = $this;
-     $this->request = new request();
-     $this->router = new router($this->request);
+    public function __construct ($config)
+    {
+        self::$app = $this;
+        $this->request = new request();
+        $this->router = new router($this->request);
+        $this->db = new dataBase($config);
+    }
 
-     $this->db = new dataBase($config);
-
- }
- public function run(){
-     $this->router->resolve();
- }
+    public function run()
+    {
+        $this->router->resolve();
+    }
 }

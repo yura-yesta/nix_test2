@@ -6,7 +6,6 @@
                 <div class="logo ">
                     <h1>N-ix education</h1>
                 </div>
-
             </div>
         </div>
     </header>
@@ -29,7 +28,5 @@
                 <a rel="stylesheet" href="blog"><img src="image/blog_write.png" width="350px"></a>
             </div>
         </div>
-
-
     </div>
 </section>

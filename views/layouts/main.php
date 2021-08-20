@@ -9,10 +9,9 @@
     <link rel="stylesheet" href="../../css/style.css">
     <style>
         A {
-            text-decoration: none; /* Убирает подчеркивание для ссылок */
+            text-decoration: none;
         }
     </style>
-
     <title>N-ix test</title>
 </head>
 <body>

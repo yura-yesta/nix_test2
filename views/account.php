@@ -28,23 +28,18 @@ $id = $_SESSION['user']['id'];
     <input type="file" name="image">
     <input type="submit">
 </form>'; ?></div>
-            <?php  echo file_exists("../public/image/$id/logo.jpeg")? '<form action="/changeInfo" method="post" enctype="multipart/form-data">
-    
-    <input type="file" name="image">
-    <input type="submit" placeholder="go">
+<?php  echo file_exists("../public/image/$id/logo.jpeg")? '<form action="/changeInfo" method="post" enctype="multipart/form-data">
+<input type="file" name="image">
+<input type="submit" placeholder="go">
 </form>' : '' ?>
-
-
             <form  action="" method="post">
                 <div>Login - <?= $_SESSION['user']['login']; ?> : <input class="account-input" type="text" name="login" placeholder="change your login" ></div>
                 <div>Name - <?= $_SESSION['user']['name']; ?> : <input class="account-input" type="text" name="name" placeholder="change your name" ></div>
                 <div>Password - <?= $_SESSION['user']['password']; ?> : <input class="account-input" type="text" name="password" placeholder="change your  password" ></div>
                 <button type="submit">Change all</button>
-
                 <a href="/exit">вийти</a>
-
             </form>
         </div>
     </div>
 </section>
-    <?php $_SESSION['message'] = '' ?>
+<?php $_SESSION['message'] = '' ?>
