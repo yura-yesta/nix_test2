@@ -108,9 +108,6 @@ class userController extends controller
                     header('Location: /account');
                 }
             }
-            else {
-                var_dump(controller::$app->request->getbody());
-            }
         }
    }
 }
