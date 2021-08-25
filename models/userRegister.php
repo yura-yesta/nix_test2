@@ -10,6 +10,7 @@ class userRegister extends dbModel
     public $login = '';
     public $name = '';
     public $password = '';
+    public string $table = 'users';
 
     public function rules(): array
     {
@@ -23,6 +24,10 @@ class userRegister extends dbModel
 
     public function registerUser()
     {
-       return $this->save();
+       return $this->create();
+    }
+
+    public function getAttributes(){
+        return ['login', 'name', 'password'];
     }
 }

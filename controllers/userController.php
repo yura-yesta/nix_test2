@@ -24,7 +24,6 @@ class userController extends controller
         if(controller::$app->request->getMethod() === 'post') {
             $userRegister = new userRegister();
             $userRegister->loadData(controller::$app->request->getbody());
-
             if($userRegister->validate() && $userRegister->registerUser()) {
                 $_SESSION['message'] = 'Registration successful. Please login!';
                 header('Location: /login');

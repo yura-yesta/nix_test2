@@ -9,6 +9,7 @@ class userLogin extends dbModel
 {
     public $login = '';
     public $password = '';
+    public string $table = 'users';
 
     public function rules(): array
     {
@@ -21,12 +22,13 @@ class userLogin extends dbModel
 
     public function checkUserGo()
     {
-         return $this->checkUser();
+        $res = $this->select(['login']);
+        return $res[0]['password'] === $this->password;
     }
 
     public function userAccount()
     {
-        return $this->gotUser();
+        return $this->select(['login'])[0];
     }
 
     public static function changeLogo()
@@ -36,7 +38,7 @@ class userLogin extends dbModel
         if (!file_exists("../public/image/$id")){
             mkdir("../public/image/$id");
         }
-            $image = $_FILES['image']['tmp_name'];
-            return move_uploaded_file($image, "../public/image/$id/logo.jpeg");
+        $image = $_FILES['image']['tmp_name'];
+        return move_uploaded_file($image, "../public/image/$id/logo.jpeg");
     }
 }

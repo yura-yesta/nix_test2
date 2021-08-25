@@ -7,9 +7,10 @@ use App\core\dbModel;
 
 class userChangeInfo extends dbModel
 {
-    public $login = '';
-    public $name = '';
-    public $password = '';
+    public $login;
+    public $name;
+    public $password;
+    public string $table = 'users';
 
     public function rules(): array
     {
@@ -32,5 +33,9 @@ class userChangeInfo extends dbModel
     public function changeUserInfo($id)
     {
         return $this->update($id);
+    }
+
+    public function getAttributes(){
+        return ['login', 'name', 'password'];
     }
 }

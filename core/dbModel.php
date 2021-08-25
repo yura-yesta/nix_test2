@@ -9,11 +9,16 @@ use PDO;
 
 abstract class dbModel extends model
 {
-    public function save()
+    public static function prepare($sql)
     {
-        $attributes = ['login', 'name', 'password'];
-        $statement = self::prepare("INSERT INTO users  (login, name, password) VALUE (:login, :name, :password)");
-        foreach ($attributes as $attr) {
+        return controller::$app->db->PDO->prepare($sql);
+    }
+
+    public function create()
+    {
+        $params = array_map(fn($h) => ":$h", $this->getAttributes());
+        $statement = self::prepare("INSERT INTO $this->table  (".implode(', ', $this->getAttributes()).") VALUE (".implode(', ', $params).")");
+        foreach ($this->getAttributes() as $attr) {
             $statement->bindParam(":$attr", $this->{$attr}) ;
         }
         return $statement->execute();
@@ -21,55 +26,33 @@ abstract class dbModel extends model
 
     public function update($id)
     {
-        $arr = controller::$app->request->getbody();
-        $attributes = [];
-        $bindParam = [];
-        foreach ($arr as $attr => $item) {
-            if(!empty($item)) {
-                $attributes[] = $attr.' = :'.$attr;
-                $bindParam[] = $attr;
-            }
-        }
-        $imp = implode(', ', $attributes);
-        $statement = self::prepare("UPDATE users SET $imp WHERE id = $id ");
-        foreach ($bindParam as $attr ) {
-            $statement->bindParam(":$attr", $this->{$attr});
-        }
-        return $statement->execute();
+       $attributes =[] ;
+       foreach ($this->getAttributes() as $attr){
+           if(!empty($this->{$attr})){
+               $attributes[] = $attr;
+           }
+       }
+       $params = array_map(fn($h) => "$h = :$h", $attributes);
+       $statement = self::prepare("UPDATE users SET ".implode(', ', $params)." WHERE id = :id ");
+       foreach ($attributes as $attr){
+           $statement->bindParam(":$attr", $this->{$attr});
+       }
+       $statement->bindParam(':id', $id);
+       return $statement->execute();
     }
 
-    public static function selectBlog($table)
+    public function select($attributes = null)
     {
-        $statement = self::prepare("SELECT * FROM $table");
+        if($attributes !== null){
+            $params = array_map(fn($h) => "$h = :$h", $attributes);
+            $statement = self::prepare("SELECT * FROM $this->table WHERE ".implode(' or ', $params));
+            foreach ($attributes as $attr){
+                $statement->bindParam(":$attr",$this->{$attr} );
+            }
+        }else{
+            $statement = self::prepare("SELECT * FROM $this->table");
+        }
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    public static function prepare($sql)
-    {
-        return controller::$app->db->PDO->prepare($sql);
-    }
-
-    public function checkUser()
-    {
-        $statement = self::prepare("SELECT * FROM users  WHERE login = :login");
-        $statement->bindParam(":login", $this->{'login'});
-        $statement->execute();
-        $res = $statement->fetch();
-        if($res['password'] === $this->{'password'}){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-    public function gotUser()
-    {
-        $statement = self::prepare("SELECT * FROM users  WHERE login = :login");
-        $statement->bindParam(":login", $this->{'login'});
-        $statement->execute();
-        $res = $statement->fetch();
-        return $res;
     }
 }
